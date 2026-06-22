@@ -6,13 +6,15 @@
 >
 > **Naturaleza y uso:** material **generico y reutilizable** — sirve para que
 > Ronald estudie, para charlas de marca personal, para posts de LinkedIn y para
-> capacitar equipos (incluido MIC/Tigo). Vive en `monetizacion` como base comun.
-> Si en el futuro surgen ejemplos o casos especificos de un empleador/cliente
-> (datasets internos, flujos propietarios), esos casos puntuales se separan a su
-> repo correspondiente (p. ej. `mic-lab`) — aqui se mantiene lo generico.
+> capacitar equipos (incluido MIC/Tigo). Vive en su **repo propio**
+> `ronaldmego/claude-capacitacion` — **fuente de la verdad**; `monetizacion` y
+> `mic-lab` solo apuntan aqui. Si surgen ejemplos o casos especificos de un
+> empleador/cliente (datasets internos, flujos propietarios), esos casos puntuales
+> viven en el repo de ese empleador (p. ej. `mic-lab`) — aqui se mantiene lo generico.
 >
-> **Issue de tracking (trabajo activo + bitácora):** `#18`. Este doc es la fuente
-> de verdad; el issue es entrada + bitácora de producción.
+> **Fuente de la verdad del contenido:** este repo (`claude-capacitacion`).
+> **Tracking de producción** (trabajo activo + bitácora): issue `#18` en
+> `ronaldmego/monetizacion` (la capacitación es entregable de marca).
 >
 > Estado: v2.6, 2026-06-22 (v2.6 suma **The Founder's Playbook** — guia oficial
 > Anthropic por etapa de startup, fila "Founder / startup" en guias por funcion;
@@ -39,10 +41,10 @@ Desde aquí se llega a los entregables visuales y listos para repartir:
 
 ## Como retomar este tema (donde quedamos — 2026-06-19)
 
-> **Trigger de continuidad:** abrir `monetizacion` (Athena hace `git pull`) y decir
-> *"retomemos la capacitacion Claude"*. Este doc es la SSOT; el issue `#18` es la
-> bitacora de trabajo. Esta seccion dice en que punto estamos. Actualizar (y comentar
-> en `#18`) al cerrar cada sesion de trabajo sobre el tema.
+> **Trigger de continuidad:** abrir `claude-capacitacion` (Athena hace `git pull`) y
+> decir *"retomemos la capacitacion Claude"*. Este repo es la SSOT del contenido; el
+> issue `#18` en `monetizacion` es la bitacora de producción. Esta seccion dice en que
+> punto estamos. Actualizar (y comentar en `#18`) al cerrar cada sesion sobre el tema.
 
 **Fase actual:** Ronald *estudia* las fuentes para decidir que toma de referencia
 y luego *crear* la capacitacion. Material curado y analizado; aun no producido.
