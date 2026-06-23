@@ -4,17 +4,11 @@
 > (Enterprise / Cowork / Code). No intenta reemplazar las guias oficiales: las
 > ordena, resume y aterriza por audiencia.
 >
-> **Naturaleza y uso:** material **generico y reutilizable** — sirve para que
-> Ronald estudie, para charlas de marca personal, para posts de LinkedIn y para
-> capacitar equipos (incluido MIC/Tigo). Vive en su **repo propio**
-> `ronaldmego/claude-capacitacion` — **fuente de la verdad**; `monetizacion` y
-> `mic-lab` solo apuntan aqui. Si surgen ejemplos o casos especificos de un
-> empleador/cliente (datasets internos, flujos propietarios), esos casos puntuales
-> viven en el repo de ese empleador (p. ej. `mic-lab`) — aqui se mantiene lo generico.
->
-> **Fuente de la verdad del contenido:** este repo (`claude-capacitacion`).
-> **Tracking de producción** (trabajo activo + bitácora): issue `#18` en
-> `ronaldmego/monetizacion` (la capacitación es entregable de marca).
+> **Naturaleza y uso:** material **genérico y reutilizable** para estudiar, dar
+> charlas y capacitar equipos en Claude. Pensado para reutilizarse tal cual: copiar
+> las plantillas, adaptar la propuesta de sesiones y tomar la curaduría de fuentes.
+> Si necesitas casos específicos de tu organización (datasets internos, flujos
+> propietarios), mantenlos en tu propio repo — aquí solo vive lo genérico.
 >
 > Estado: v2.6, 2026-06-22 (v2.6 suma **The Founder's Playbook** — guia oficial
 > Anthropic por etapa de startup, fila "Founder / startup" en guias por funcion;
@@ -38,28 +32,6 @@ Desde aquí se llega a los entregables visuales y listos para repartir:
   `CLAUDE.md` para la raíz de un repo (capa 2).
 - ⚙️ **Settings sample** — [`settings-json-empresa.md`](settings-json-empresa.md):
   `settings.json` con `deny` para proteger secretos (acompaña a las plantillas).
-
-## Como retomar este tema (donde quedamos — 2026-06-19)
-
-> **Trigger de continuidad:** abrir `claude-capacitacion` (Athena hace `git pull`) y
-> decir *"retomemos la capacitacion Claude"*. Este repo es la SSOT del contenido; el
-> issue `#18` en `monetizacion` es la bitacora de producción. Esta seccion dice en que
-> punto estamos. Actualizar (y comentar en `#18`) al cerrar cada sesion sobre el tema.
-
-**Fase actual:** Ronald *estudia* las fuentes para decidir que toma de referencia
-y luego *crear* la capacitacion. Material curado y analizado; aun no producido.
-
-**Proximos pasos:**
-
-1. **Estudiar (orden sugerido, track BPO):** Anthropic *Introducing Cowork* (1 min,
-   encuadre) -> **Migue Baena** (hands-on en paralelo en la maquina, ES) -> **Nate
-   Herk** (mindset + modelo de estilo). Pocock queda para el track tecnico.
-2. **Decidir formato y audiencia:** charla / deck / video; primera audiencia
-   (MIC interno vs charla publica). Lo generico sirve para ambas.
-3. **Armar el guion** con la "Plantilla aplicable a un guion" (seccion Estilo de
-   comunicacion de referencia, al final).
-4. **Verificar metricas reales** de los posts X/LinkedIn citados antes de usarlos
-   en slides — requiere sesion logueada en la Mac mini (cookies). Ver *Pendientes v3*.
 
 ## Como usar este documento
 
@@ -102,7 +74,7 @@ Regla practica: para capacitacion, usar repos oficiales como demo; usar
 awesome-lists solo para descubrir ideas. Antes de instalar o ejecutar una skill,
 leer `SKILL.md` y cualquier script incluido.
 
-## Lectura minima para Ronald
+## Lectura minima recomendada
 
 Si solo hay tiempo para 8 piezas:
 
@@ -254,7 +226,7 @@ Datos consultados con YouTube Data API el 2026-06-19.
 | [@sh_reya - skill docs/data model changing daily](https://x.com/sh_reya/status/2062347411511746874) | Mantenimiento de skill docs. | Refuerza que skills son assets vivos, no docs muertos. |
 | [@Mnilax - Don't build agents, build skills instead](https://x.com/Mnilax/status/2060422436370210922) | Skills vs agents. | Frase potente para data/dev: encapsular procedimiento. |
 | [@cyrilXBT - Anthropic skills talk](https://x.com/cyrilXBT/status/2054033707296547043) | Skills y mantenimiento. | Complementa el video AI Engineer. |
-| [Brij Kishore Pandey - Claude Code project structure](https://www.linkedin.com/posts/brijpandeyji_the-claude-code-project-structure-i-wish-activity-7441293017766051840-oMkH) | Estructura `.claude/`, skills, commands, agents, hooks. | Similar al screenshot que envio Ronald; util como slide visual. |
+| [Brij Kishore Pandey - Claude Code project structure](https://www.linkedin.com/posts/brijpandeyji_the-claude-code-project-structure-i-wish-activity-7441293017766051840-oMkH) | Estructura `.claude/`, skills, commands, agents, hooks. | Util como slide visual de la estructura `.claude/`. |
 | [Nate Herk - Claude Code skills](https://www.linkedin.com/posts/nateherkelman_i-tried-100-claude-code-skills-these-6-activity-7456701386110435328-SsG0) | Skills reutilizables. | Sirve para explicar que productividad = workflows empaquetados. |
 | Alex Wang - 4 habits que hacen Claude Code mas confiable | `CLAUDE.md` estable (no dump), Plan Mode, prompts→skills, hooks para lo deterministico. | Base del "abre bocas" del track Code (ver seccion "Configurar un proyecto con Claude Code"). Buen slide de habitos. |
 
@@ -589,16 +561,10 @@ Hook con stakes -> promesa/intriga -> lista numerada -> por cada item:
 **concepto -> analogia cotidiana -> ejemplo real -> "como hacerlo" accionable ->
 one-liner memorable** -> cierre con CTA.
 
-## Pendientes para una version v3
+## Próximos pasos (para quien adapte esta capacitación)
 
-- Ver con Ronald si quiere capturas/screenshots para slides.
-- Validar en Chrome/X logueado metricas reales de engagement para posts X/LinkedIn
-  seleccionados. La busqueda web encuentra links, pero no garantiza metricas
-  completas ni actuales.
-- Probar los plugins oficiales en una maquina de demo antes de mostrarlos.
-- Definir datasets sinteticos de practica para BPO y data.
-- **Estudiar el curso gratuito oficial [AI Fluency for Small Business](https://www.anthropic.com/news/claude-for-small-business)**
-  (Anthropic + PayPal) como **benchmark de estructura** para la propia capacitacion
-  de Ronald — que cubre, en que orden, como onboarda a no tecnicos. Doble valor:
-  referencia de contenido BPO y modelo de un training oficial bien armado.
-- Convertir esta curaduria a deck o Notion page cuando ya se apruebe el enfoque.
+- Probar los plugins/skills oficiales en una máquina de demo antes de mostrarlos.
+- Definir datasets sintéticos de práctica para los tracks BPO y data.
+- Validar métricas actuales de los posts citados antes de usarlos en slides
+  (los conteos cambian con el tiempo).
+- Convertir esta curaduría a deck o página de notas cuando se apruebe el enfoque.

@@ -1,0 +1,16 @@
+# Changelog
+
+All notable changes to this project are documented here.
+Format based on [Keep a Changelog](https://keepachangelog.com/).
+
+## [Unreleased]
+
+### Added
+- Initial public-ready release: curated Claude enablement guide (`capacitacion-claude.md`),
+  layered-setup diagram, and ready-to-copy templates (`global` / `proyecto` `CLAUDE.md`,
+  `settings.json` sample).
+- English `README.md`, `LICENSE` (MIT).
+
+### Changed
+- Content sanitized for public use: removed first-person and internal-workflow material;
+  kept the generic, reusable content. Content language: Spanish (by design).
