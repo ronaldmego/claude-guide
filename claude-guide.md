@@ -68,6 +68,7 @@ referencia o discovery, no como instalacion automatica.
 | [BehiSecc/awesome-claude-skills](https://github.com/BehiSecc/awesome-claude-skills) | Awesome-list; ~9K stars | Otra lista de discovery de Claude Skills; usar solo como entrada para evaluar. |
 | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Skills sectoriales; ~25K stars | Skills de research, ciencia, ingenieria, analisis y finanzas; potencial para data/analytics, con revision previa. |
 | [midudev/autoskills](https://github.com/midudev/autoskills) | Instalador/stack; ~5.6K stars | Interesante por SHA/lockfile; no usar en produccion sin revision de seguridad. |
+| [skills.sh](https://www.skills.sh/) | Registry/buscador de skills (no un repo) | Directorio web para descubrir skills por caso de uso; buen punto de entrada en una capacitacion. Tratar como discovery: revisar `SKILL.md` y scripts antes de instalar. |
 | [jdepoix/youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api) | Utilidad popular; ~7.6K stars | Alternativa tecnica para transcripts de YouTube si se necesita auditar videos publicos. |
 
 Regla practica: para capacitacion, usar repos oficiales como demo; usar
