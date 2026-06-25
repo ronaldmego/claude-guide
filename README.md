@@ -1,9 +1,9 @@
 # claude-guide
 
 > A ready-to-use, **Spanish-language** enablement kit for rolling out **Claude** in
-> a company — both Enterprise / Cowork (non-technical) and Claude Code (technical).
-> Curated official sources, a session plan, and copy-paste `CLAUDE.md` /
-> `settings.json` templates.
+> a company — primarily **Claude Code** (technical / data), with a secondary track
+> for **Cowork** (non-technical). Curated official sources, a session plan, and
+> copy-paste `CLAUDE.md` / `settings.json` templates.
 
 ## The problem
 
@@ -14,16 +14,23 @@ parts.
 
 ## The solution
 
-This kit curates the **official sources**, organizes them by audience (business vs
-technical), proposes a **training plan**, and ships **ready-to-copy templates** so a
+This kit curates the **official sources**, organizes them by audience (technical vs
+business), proposes a **training plan**, and ships **ready-to-copy templates** so a
 team goes from "we have Claude" to "we use it well and safely" fast. The content is in
 **Spanish on purpose**: there's plenty in English, far less curated in Spanish.
+
+It splits into **two self-contained guides by audience** plus a central summary that
+routes between them — so a reader opens only the track they care about. The emphasis
+is on the **Code / data track** (this repo is mostly visited by coders and data
+folks); the **BPO / business track** is secondary, there for whoever also wants it.
 
 ## What's inside
 
 | File | What it is |
 |---|---|
-| **`claude-guide.md`** | **The guide** — curated official sources (BPO/Cowork + Code/data), a 3-session training plan, security by track, and a communication-style model. **Start here.** |
+| **`claude-guide.md`** | **Central summary / router** — the two tracks, shared skill sources, cross-track minimum reading, security note, and the training program. **Start here.** |
+| **`guia-code.md`** ★ | **Code / data guide (primary)** — Claude Code, `CLAUDE.md`/skills/hooks/subagents, self-service analytics, project setup, security (secrets/permissions). Self-contained. |
+| `guia-bpo.md` | **BPO / Cowork guide (secondary)** — Claude Cowork for non-technical roles (Legal, HR, ops), official sources by function, security (access & actions). Self-contained. |
 | `diagrama-capas-claude-empresa.md` | ASCII diagram of the layered setup (global vs per-project), infographic-style. |
 | `global-claude-md-empresa.md` | Ready template: **global** `CLAUDE.md` (goes in `~/.claude/`). |
 | `proyecto-claude-md-empresa.md` | Ready template: **per-project** `CLAUDE.md` (repo root). |
@@ -35,7 +42,9 @@ team goes from "we have Claude" to "we use it well and safely" fast. The content
 git clone https://github.com/ronaldmego/claude-guide.git
 ```
 
-1. Read **`claude-guide.md`** (the guide) — from its index you reach the diagram and the templates.
+1. Read **`claude-guide.md`** (central summary) and pick your track:
+   - Technical / data → **`guia-code.md`** (the primary track).
+   - Business / non-technical → **`guia-bpo.md`**.
 2. Copy `global-claude-md-empresa.md` → `~/.claude/CLAUDE.md` and replace `[nombre de la empresa]`.
 3. Copy `proyecto-claude-md-empresa.md` → a `CLAUDE.md` at the root of each repo.
 4. Copy the `settings.json` from `settings-json-empresa.md` (most useful on shared / less-trusted machines).

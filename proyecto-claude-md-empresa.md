@@ -3,7 +3,7 @@
      Reemplaza los [placeholders] y borra lo que no aplique.
      Se combina con el CLAUDE.md global (~/.claude/CLAUDE.md), que aporta identidad,
      principios de trabajo y seguridad. Aquí va SOLO lo específico del proyecto.
-     La guía de cómo usar esta plantilla está en claude-guide.md. -->
+     La guía de cómo usar esta plantilla está en guia-code.md. -->
 
 # [Nombre del proyecto]
 
