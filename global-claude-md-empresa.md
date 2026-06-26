@@ -44,6 +44,22 @@ hagas en esta máquina, en cualquier proyecto. El manual de cada proyecto (su pr
 - Antes de commitear, verifica con `git diff --staged` que no se cuela ningún secreto.
 - Como red de seguridad, configura `~/.claude/settings.json` (ver `settings-json-empresa.md`).
 
+## Skills globales (reutilizables entre proyectos)
+
+Las skills que sirven en **varios** proyectos no se copian repo por repo: se dejan a
+nivel global e invocables con `/<nombre>` desde cualquier proyecto de la máquina.
+
+- Viven versionadas en un **repo hub** del equipo y se enlazan (symlink) a
+  `~/.claude/skills/<nombre>/` — así un `git pull` en el hub actualiza la skill en todos
+  los proyectos, sin duplicar.
+- Si una skill necesita secretos, cárgalos **global-first** desde un `.env` global fuera
+  de git (`~/.claude/.secrets/.env`, permisos `600`), nunca desde el repo.
+- Hazlo **reproducible**: un script de setup que enlace las skills y prepare el `.env` en
+  una máquina nueva.
+
+> Regla: lo **repetible entre proyectos** → skill global; lo **específico de un proyecto**
+> → skill en ese repo; lo **determinístico** (validar/bloquear) → hooks.
+
 ## Recursos
 
 - El `CLAUDE.md` de cada proyecto tiene su contexto, comandos y convenciones propias.

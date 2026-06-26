@@ -5,6 +5,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+- **"Global skills" layer (Layer 1.5)** in the global `CLAUDE.md` template + README
+  layered model: reusable skills invocable as `/<name>` from any project, wired from a
+  versioned hub repo into `~/.claude/skills/`, with secrets loaded global-first from a
+  gitignored `~/.claude/.secrets/.env` and a reproducible setup script. Generic/public-safe.
+- **⚠️ NO TOCAR convention** in the per-project `CLAUDE.md` template: mark off-limits
+  areas (external forks, sibling apps, generated code) so the agent doesn't edit what
+  looks dead but isn't.
+
 ### Changed
 - **v3.0 — split the single guide into two self-contained guides by audience plus a
   central router.** `claude-guide.md` is now the **central summary** (two tracks,

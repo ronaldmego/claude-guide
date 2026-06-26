@@ -33,6 +33,9 @@ cp .env.example .env   # completar credenciales (NUNCA commitear el .env real)
 - Lenguaje y estilo: [ej. type hints; snake_case en Python, camelCase en JS/TS]
 - Estructura: [ej. un modelo por archivo en models/]
 - Remotes / despliegue: [ej. GitHub para X, GitLab corporativo para Y] (si aplica)
+- **Áreas off-limits (⚠️ NO TOCAR):** si el repo tiene partes que no se deben editar
+  (un fork de un proyecto externo, una app hermana, código generado), márcalas aquí con
+  una línea ⚠️. Evita que el agente edite lo que parece muerto pero no lo es.
 - [Otras convenciones del equipo]
 
 ## Seguridad del proyecto

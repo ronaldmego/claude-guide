@@ -57,6 +57,8 @@ diagram:
 
 - **Layer 1 · global** (`~/.claude/CLAUDE.md` + `settings.json`) — corporate identity,
   security and generic working principles. Shareable with anyone.
+- **Layer 1.5 · global skills** (`~/.claude/skills/`) — reusable skills invocable as
+  `/<name>` from any project, wired from a versioned hub repo. See the global template.
 - **Layer 2 · per project** (`<repo>/CLAUDE.md`) — context, commands, conventions.
 - **Determinism** lives in hooks; **repeatable procedures** live in skills.
 
