@@ -6,7 +6,7 @@
 >
 > Esta guia es autocontenida: si solo te interesa la parte tecnica, lees esto y no
 > necesitas el track BPO. Para el resumen/indice y el track no tecnico, ver
-> [`claude-guide.md`](claude-guide.md) (central) y [`guia-bpo.md`](guia-bpo.md).
+> [`claude-guide.md`](../claude-guide.md) (central) y [`guia-bpo.md`](../bpo/guia-bpo.md).
 
 ## Lectura minima (si solo hay tiempo para 4 piezas)
 
@@ -160,17 +160,17 @@ Notas de precision (correcciones a infograficos que circulan):
 ### Plantillas listas para distribuir
 
 El modelo es en **dos capas** (ver el diagrama
-[`diagrama-capas-claude-empresa.md`](diagrama-capas-claude-empresa.md)). Hay un
+[`diagrama-capas-claude-empresa.md`](../comun/diagrama-capas-claude-empresa.md)). Hay un
 **archivo listo para copiar por cada capa** — sanitizados (sin identidades ni datos
 de ningun empleador), solo reemplazar placeholders y borrar lo que no aplique:
 
-- **Capa 1 · global** → [`global-claude-md-empresa.md`](global-claude-md-empresa.md):
+- **Capa 1 · global** → [`global-claude-md-empresa.md`](../comun/global-claude-md-empresa.md):
   identidad corporativa + principios de trabajo + seguridad. Su cuerpo **es** el
   `CLAUDE.md`; se copia a `~/.claude/CLAUDE.md`. Compartible con cualquier empleado.
-- **Capa 2 · por proyecto** → [`proyecto-claude-md-empresa.md`](proyecto-claude-md-empresa.md):
+- **Capa 2 · por proyecto** → [`proyecto-claude-md-empresa.md`](../comun/proyecto-claude-md-empresa.md):
   contexto + quick start + comandos + convenciones + seguridad del repo. Se copia a
   un `CLAUDE.md` en la raiz del proyecto; se combina con el global.
-- **Settings** → [`settings-json-empresa.md`](settings-json-empresa.md): `settings.json`
+- **Settings** → [`settings-json-empresa.md`](../comun/settings-json-empresa.md): `settings.json`
   con `deny` para proteger secretos. Acompaña a las plantillas (global o por proyecto).
 
 Estos son los **archivos** (copiar tal cual); esta guia explica el **por que**.
@@ -271,7 +271,7 @@ Datos consultados con YouTube Data API el 2026-06-19. Los conteos cambian.
 
 Las **fuentes de discovery de skills/plugins** (repos publicos de alta senal,
 registries como `skills.sh`) son compartidas entre tracks y viven en el central:
-ver [`claude-guide.md` → Fuentes de skills/plugins](claude-guide.md#fuentes-de-skillsplugins-discovery).
+ver [`claude-guide.md` → Fuentes de skills/plugins](../claude-guide.md#fuentes-de-skillsplugins-discovery).
 
 ## Sesion de capacitacion — Code/data
 

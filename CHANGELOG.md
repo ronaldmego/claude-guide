@@ -15,6 +15,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
   looks dead but isn't.
 
 ### Changed
+- **v3.1 — reorganized into folders + added a navigable table of contents.** Content is
+  now grouped by track: `code-data/` (Code/data track, primary), `bpo/` (BPO/Cowork
+  track, secondary), and `comun/` (shared core: the `CLAUDE.md`/`settings.json` templates
+  + layered diagram, used by both tracks). The **README** now carries a **table of
+  contents / índice** linking each block at its new path; `claude-guide.md` stays as the
+  curated router. Files were moved with `git mv` (history preserved) and all internal
+  links updated (verified: 0 broken). No content changed — only structure. This lets the
+  Code/data track go as advanced as it needs (hooks, etc.) without affecting BPO readers.
 - **v3.0 — split the single guide into two self-contained guides by audience plus a
   central router.** `claude-guide.md` is now the **central summary** (two tracks,
   shared skill sources, cross-track minimum reading, security note, training program).

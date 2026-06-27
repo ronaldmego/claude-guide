@@ -6,7 +6,7 @@
 >
 > Esta guia es autocontenida: si solo te interesa la parte de negocio, lees esto y
 > no necesitas el track tecnico. Para el resumen/indice y el track Code, ver
-> [`claude-guide.md`](claude-guide.md) (central) y [`guia-code.md`](guia-code.md).
+> [`claude-guide.md`](../claude-guide.md) (central) y [`guia-code.md`](../code-data/guia-code.md).
 
 ## Lectura minima (si solo hay tiempo para 4 piezas)
 

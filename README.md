@@ -19,22 +19,54 @@ business), proposes a **training plan**, and ships **ready-to-copy templates** s
 team goes from "we have Claude" to "we use it well and safely" fast. The content is in
 **Spanish on purpose**: there's plenty in English, far less curated in Spanish.
 
-It splits into **two self-contained guides by audience** plus a central summary that
-routes between them — so a reader opens only the track they care about. The emphasis
-is on the **Code / data track** (this repo is mostly visited by coders and data
-folks); the **BPO / business track** is secondary, there for whoever also wants it.
+It is organized into **two self-contained tracks by audience** plus a **shared core**,
+with a central router that sends each reader to the track they care about. The emphasis
+is on the **Code / data track** (this repo is mostly visited by coders and data folks);
+the **BPO / Cowork track** is secondary, there for whoever also wants it.
 
-## What's inside
+## Repository structure
 
-| File | What it is |
-|---|---|
-| **`claude-guide.md`** | **Central summary / router** — the two tracks, shared skill sources, cross-track minimum reading, security note, and the training program. **Start here.** |
-| **`guia-code.md`** ★ | **Code / data guide (primary)** — Claude Code, `CLAUDE.md`/skills/hooks/subagents, self-service analytics, project setup, security (secrets/permissions). Self-contained. |
-| `guia-bpo.md` | **BPO / Cowork guide (secondary)** — Claude Cowork for non-technical roles (Legal, HR, ops), official sources by function, security (access & actions). Self-contained. |
-| `diagrama-capas-claude-empresa.md` | ASCII diagram of the layered setup (global vs per-project), infographic-style. |
-| `global-claude-md-empresa.md` | Ready template: **global** `CLAUDE.md` (goes in `~/.claude/`). |
-| `proyecto-claude-md-empresa.md` | Ready template: **per-project** `CLAUDE.md` (repo root). |
-| `settings-json-empresa.md` | Ready sample: `settings.json` with a `deny` rule to protect secrets. |
+```
+claude-guide.md   ← central router / curated index — START HERE
+README.md         ← this file (structure + table of contents)
+
+comun/            ← shared core (used by BOTH tracks)
+  global-claude-md-empresa.md       global CLAUDE.md template (~/.claude/)
+  proyecto-claude-md-empresa.md     per-project CLAUDE.md template
+  settings-json-empresa.md          settings.json sample (protect secrets)
+  diagrama-capas-claude-empresa.md  layered-setup diagram (handout)
+
+code-data/        ← Code / data track (PRIMARY) ★
+  guia-code.md    Claude Code · skills · hooks · subagents · MCP · analytics
+
+bpo/              ← BPO / Cowork track (secondary)
+  guia-bpo.md     Claude Cowork for non-technical roles (Legal, HR, ops)
+```
+
+## Table of contents / Índice de contenidos
+
+**▶ Start here:** [`claude-guide.md`](claude-guide.md) — central router: the two tracks,
+shared skill/plugin sources, minimum cross-track reading, security note, and the
+training program.
+
+**★ Track Code / data** (primary)
+- [`code-data/guia-code.md`](code-data/guia-code.md) — Claude Code, `CLAUDE.md` / skills
+  / hooks / subagents / MCP, self-service analytics, project setup, security
+  (secrets & permissions). Self-contained.
+
+**Track BPO / Cowork** (secondary)
+- [`bpo/guia-bpo.md`](bpo/guia-bpo.md) — Claude Cowork for non-technical roles (Legal,
+  HR, ops), official sources by function, security (access & actions). Self-contained.
+
+**Shared core — `comun/`** (used by both tracks)
+- [`comun/diagrama-capas-claude-empresa.md`](comun/diagrama-capas-claude-empresa.md) —
+  ASCII diagram of the layered setup (global vs per-project), infographic-style.
+- [`comun/global-claude-md-empresa.md`](comun/global-claude-md-empresa.md) — ready
+  template: **global** `CLAUDE.md` (goes in `~/.claude/`).
+- [`comun/proyecto-claude-md-empresa.md`](comun/proyecto-claude-md-empresa.md) — ready
+  template: **per-project** `CLAUDE.md` (repo root).
+- [`comun/settings-json-empresa.md`](comun/settings-json-empresa.md) — ready sample:
+  `settings.json` with a `deny` rule to protect secrets.
 
 ## Quick start
 
@@ -42,18 +74,19 @@ folks); the **BPO / business track** is secondary, there for whoever also wants 
 git clone https://github.com/ronaldmego/claude-guide.git
 ```
 
-1. Read **`claude-guide.md`** (central summary) and pick your track:
-   - Technical / data → **`guia-code.md`** (the primary track).
-   - Business / non-technical → **`guia-bpo.md`**.
-2. Copy `global-claude-md-empresa.md` → `~/.claude/CLAUDE.md` and replace `[nombre de la empresa]`.
-3. Copy `proyecto-claude-md-empresa.md` → a `CLAUDE.md` at the root of each repo.
-4. Copy the `settings.json` from `settings-json-empresa.md` (most useful on shared / less-trusted machines).
+1. Read **[`claude-guide.md`](claude-guide.md)** (central router) and pick your track:
+   - Technical / data → **[`code-data/guia-code.md`](code-data/guia-code.md)** (the primary track).
+   - Business / non-technical → **[`bpo/guia-bpo.md`](bpo/guia-bpo.md)**.
+2. Copy [`comun/global-claude-md-empresa.md`](comun/global-claude-md-empresa.md) → `~/.claude/CLAUDE.md` and replace `[nombre de la empresa]`.
+3. Copy [`comun/proyecto-claude-md-empresa.md`](comun/proyecto-claude-md-empresa.md) → a `CLAUDE.md` at the root of each repo.
+4. Copy the `settings.json` from [`comun/settings-json-empresa.md`](comun/settings-json-empresa.md) (most useful on shared / less-trusted machines).
 
 ## The layered model
 
 A company Claude setup is built in **layers** — from the most general (every employee)
-to the most specific (one repo). See `diagrama-capas-claude-empresa.md` for the full
-diagram:
+to the most specific (one repo). See
+[`comun/diagrama-capas-claude-empresa.md`](comun/diagrama-capas-claude-empresa.md) for
+the full diagram:
 
 - **Layer 1 · global** (`~/.claude/CLAUDE.md` + `settings.json`) — corporate identity,
   security and generic working principles. Shareable with anyone.

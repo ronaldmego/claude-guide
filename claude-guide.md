@@ -11,10 +11,12 @@
 > Si necesitas casos específicos de tu organización (datasets internos, flujos
 > propietarios), mantenlos en tu propio repo — aquí solo vive lo genérico.
 >
-> Estado: v3.0, 2026-06-25 (**reorganización mayor**: la guía única se dividió en
-> dos guías autocontenidas por track — `guia-code.md` y `guia-bpo.md` — más este
-> resumen central que las referencia. Énfasis en el track Code; BPO como track
-> secundario. Historial anterior en `CHANGELOG.md`).
+> Estado: v3.1, 2026-06-27 (**reorg a carpetas**: el contenido se ordenó en
+> `code-data/` (track Code, principal), `bpo/` (track BPO, secundario) y `comun/`
+> (núcleo compartido: plantillas + diagrama). El `README.md` trae el **índice de
+> contenidos** navegable; este archivo es el router curado. Énfasis en el track Code.
+> v3.0 (2026-06-25) ya había dividido la guía única en dos tracks. Historial en
+> `CHANGELOG.md`).
 
 ## Las dos guias (empieza aqui)
 
@@ -23,8 +25,8 @@ te interesa — no necesitas leer la otra.
 
 | Track | Guia | Para quien | Superficie |
 |---|---|---|---|
-| **Code / data** ★ principal | **[`guia-code.md`](guia-code.md)** | Data engineering, analytics engineering, BI/data analysts, developers | Claude Code + skills + `CLAUDE.md` + hooks + subagents + MCP |
-| BPO / negocio · secundario | [`guia-bpo.md`](guia-bpo.md) | Legal, RRHH, operaciones, back office, finanzas operativas, managers | Claude Cowork + Chat + skills/plugins/conectores |
+| **Code / data** ★ principal | **[`guia-code.md`](code-data/guia-code.md)** | Data engineering, analytics engineering, BI/data analysts, developers | Claude Code + skills + `CLAUDE.md` + hooks + subagents + MCP |
+| BPO / negocio · secundario | [`guia-bpo.md`](bpo/guia-bpo.md) | Legal, RRHH, operaciones, back office, finanzas operativas, managers | Claude Cowork + Chat + skills/plugins/conectores |
 
 **Por que el enfasis en Code.** Este repo es publico en GitHub y lo visitan sobre
 todo coders y perfiles de data; ahi va el peso. El track BPO queda como secundario,
@@ -36,21 +38,21 @@ entra a `guia-code.md` y no tiene que cruzar contenido de Cowork que no le sirve
 Ademas de las dos guias, la carpeta trae entregables visuales y listos para repartir.
 **Todos pertenecen al track Code** (modelo en capas de `CLAUDE.md` + `settings.json`);
 el **cómo y el por qué de usarlos** se explica en
-[`guia-code.md` → Configurar un proyecto con Claude Code](guia-code.md#configurar-un-proyecto-con-claude-code-abre-bocas)
-y en su sección [Plantillas listas para distribuir](guia-code.md#plantillas-listas-para-distribuir).
+[`guia-code.md` → Configurar un proyecto con Claude Code](code-data/guia-code.md#configurar-un-proyecto-con-claude-code-abre-bocas)
+y en su sección [Plantillas listas para distribuir](code-data/guia-code.md#plantillas-listas-para-distribuir).
 Aquí van solo como índice:
 
-- 📊 **Diagrama de capas** — [`diagrama-capas-claude-empresa.md`](diagrama-capas-claude-empresa.md):
+- 📊 **Diagrama de capas** — [`diagrama-capas-claude-empresa.md`](comun/diagrama-capas-claude-empresa.md):
   infográfico ASCII del modelo en capas. Ideal como handout/slide.
-- 📄 **Plantilla global lista** — [`global-claude-md-empresa.md`](global-claude-md-empresa.md):
+- 📄 **Plantilla global lista** — [`global-claude-md-empresa.md`](comun/global-claude-md-empresa.md):
   `CLAUDE.md` para `~/.claude/` (capa 1, compartible con cualquier empleado).
-- 📄 **Plantilla por proyecto lista** — [`proyecto-claude-md-empresa.md`](proyecto-claude-md-empresa.md):
+- 📄 **Plantilla por proyecto lista** — [`proyecto-claude-md-empresa.md`](comun/proyecto-claude-md-empresa.md):
   `CLAUDE.md` para la raíz de un repo (capa 2).
-- ⚙️ **Settings sample** — [`settings-json-empresa.md`](settings-json-empresa.md):
+- ⚙️ **Settings sample** — [`settings-json-empresa.md`](comun/settings-json-empresa.md):
   `settings.json` con `deny` para proteger secretos (acompaña a las plantillas).
 
 > El track **BPO/Cowork** no usa archivos `CLAUDE.md`/`settings.json`: su equivalente
-> son las *Project instructions* dentro de Cowork (ver [`guia-bpo.md`](guia-bpo.md)).
+> son las *Project instructions* dentro de Cowork (ver [`guia-bpo.md`](bpo/guia-bpo.md)).
 
 La capacitacion debe apoyarse en fuentes existentes, en este orden de confianza:
 
@@ -101,8 +103,8 @@ una skill, leer `SKILL.md` y cualquier script incluido** (una skill = instruccio
 
 > El tema de seguridad es **distinto en cada track** y casi siempre sale en la
 > capacitacion. El detalle (preguntas tipicas + respuestas) vive en cada guia:
-> [Code → secretos, permisos, ejecucion](guia-code.md#seguridad--el-riesgo-es-secretos-permisos-y-ejecucion) ·
-> [BPO → acceso y acciones](guia-bpo.md#seguridad--el-riesgo-es-acceso-y-acciones-no-codigo).
+> [Code → secretos, permisos, ejecucion](code-data/guia-code.md#seguridad--el-riesgo-es-secretos-permisos-y-ejecucion) ·
+> [BPO → acceso y acciones](bpo/guia-bpo.md#seguridad--el-riesgo-es-acceso-y-acciones-no-codigo).
 
 El principio comun: **minimo privilegio + humano en las decisiones irreversibles**.
 Para BPO se expresa como carpeta acotada y confirmacion; para Code como permisos,
@@ -114,9 +116,9 @@ Propuesta de 3 sesiones; el detalle (prework + demo) vive en cada guia.
 
 | Sesion | Track | Tema | Detalle |
 |---|---|---|---|
-| 1 | BPO | "No es chat, es delegacion supervisada" | [`guia-bpo.md`](guia-bpo.md#sesion-1--no-es-chat-es-delegacion-supervisada) |
-| 2 | BPO | BPO por funcion: Legal/RRHH/Ops | [`guia-bpo.md`](guia-bpo.md#sesion-2--bpo-por-funcion-legalrrhhops) |
-| 3 | Code | "Self-service analytics sin caos" | [`guia-code.md`](guia-code.md#sesion-de-capacitacion--codedata) |
+| 1 | BPO | "No es chat, es delegacion supervisada" | [`guia-bpo.md`](bpo/guia-bpo.md#sesion-1--no-es-chat-es-delegacion-supervisada) |
+| 2 | BPO | BPO por funcion: Legal/RRHH/Ops | [`guia-bpo.md`](bpo/guia-bpo.md#sesion-2--bpo-por-funcion-legalrrhhops) |
+| 3 | Code | "Self-service analytics sin caos" | [`guia-code.md`](code-data/guia-code.md#sesion-de-capacitacion--codedata) |
 
 ## Proximos pasos (para quien adapte esta capacitacion)
 
