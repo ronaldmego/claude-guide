@@ -1,14 +1,14 @@
 ---
-name: Sugerencia / fuente
-about: Sugerir una fuente nueva o una mejora a las plantillas
-title: "[idea] "
+name: Mejora o corrección
+about: Proponer una simplificación, corrección o mejora verificable
+title: "[mejora] "
 labels: enhancement
 ---
 
 **¿Qué propones?**
 
 
-**¿Por qué es útil?**
+**¿Qué problema resuelve?**
 
 
-**¿Fuente oficial / first-party?** (link si aplica)
+**¿Cómo lo verificaste?** (link o evidencia si aplica)

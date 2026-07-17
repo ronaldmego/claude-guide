@@ -3,10 +3,19 @@
   "permissions": {
     "deny": [
       "Read(./.env)",
-      "Read(./.env.*)",
       "Read(./**/.env)",
-      "Read(./**/.env.*)",
-      "Read(./secrets/**)"
+      "Read(./.env.local)",
+      "Read(./**/.env.local)",
+      "Read(./.env.production)",
+      "Read(./**/.env.production)",
+      "Read(./.env.staging)",
+      "Read(./**/.env.staging)",
+      "Read(./.env.development)",
+      "Read(./**/.env.development)",
+      "Read(./.env.test)",
+      "Read(./**/.env.test)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)"
     ]
   }
 }

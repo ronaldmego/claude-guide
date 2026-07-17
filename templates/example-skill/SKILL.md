@@ -1,6 +1,6 @@
 ---
 name: revisar-diff
-description: Revisa los cambios staged antes de un commit — busca secretos filtrados y archivos que no deberían ir (.env, claves), y resume qué cambió. Úsala cuando vayas a commitear o el usuario diga "revisa antes de commitear", "prepara el commit" o "¿qué estoy por subir?".
+description: Revisa los cambios staged antes de un commit — busca secretos filtrados y archivos sensibles, y resume qué cambiará. Úsala después de hacer git add y antes de commitear.
 ---
 
 # revisar-diff
@@ -11,28 +11,35 @@ cada vez.
 
 ## Cuándo usarla
 
-Antes de cualquier commit, o cuando el usuario diga "revisa el diff", "prepara el
-commit" o "¿qué voy a subir?".
+Después de hacer `git add` y antes de un commit, o cuando el usuario pida revisar
+exactamente lo que está staged.
 
 ## Procedimiento
 
-1. Mira qué está staged:
+1. Confirma el estado del árbol:
+   ```bash
+   git status --short --branch
+   ```
+   Si no hay cambios staged, dilo claramente; no reportes que el commit está limpio.
+2. Mira qué está staged:
    ```bash
    git diff --staged --stat
    ```
-2. Revisa el contenido en busca de secretos o archivos que no deberían ir:
+3. Revisa el contenido en busca de secretos o archivos que no deberían ir:
    ```bash
    git diff --staged
    ```
    Señales de alerta: `.env`, `*.key`, `*credentials*`, tokens o API keys en texto,
    credenciales embebidas en URLs (`usuario:secreto@host`).
-3. Si aparece un secreto o un archivo sensible: **PARA** y avísalo antes de commitear.
+4. Si aparece un secreto o un archivo sensible: **PARA** y avísalo antes de commitear.
    No imprimas el valor — nómbralo por archivo y línea.
-4. Si está limpio, resume en 1-3 líneas qué cambió y por qué (para el mensaje de commit).
+5. Si está limpio, resume en 1-3 líneas qué cambió y por qué (para el mensaje de commit).
 
 ## Notas
 
 - Es una red de señal, no un escáner: para escaneo serio usa gitleaks o trufflehog.
+- Revisa sólo lo staged. Para auditar un push, compara también los commits locales con
+  el upstream; no presentes esta skill como una revisión de lo que se va a subir.
 - Esta skill no necesita archivos de apoyo. Cuando una skill sí los necesite (un
   script, una plantilla), ponlos junto a este `SKILL.md` y referéncialos por ruta
   relativa.

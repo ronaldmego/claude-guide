@@ -2,9 +2,11 @@
 
 Claude Code puede leer archivos, ejecutar comandos y modificar un repositorio. Ningún ajuste aislado reemplaza una política clara: **mínimo privilegio, secretos fuera del contexto y aprobación humana para lo irreversible**.
 
-## 1. Mantén los secretos fuera del repo
+## 1. Mantén los secretos fuera del repo y del contexto
 
-- Guarda valores reales en `.env`, un keychain o un gestor de secretos.
+- Prefiere un keychain o gestor de secretos con integración nativa para la herramienta.
+- Usa `.env` sólo como alternativa local cuando el proyecto lo requiera; trátalo como
+  material sensible y mantenlo fuera de Git.
 - Incluye `.env` y archivos equivalentes en `.gitignore`.
 - Versiona sólo `.env.example`, con nombres y placeholders, nunca valores reales.
 - Antes de cada commit, revisa `git diff --staged` y usa un secrets scanner cuando el riesgo lo amerite.
@@ -19,18 +21,23 @@ La distinción es importante:
 
 Por eso el `deny` complementa la disciplina operativa; no es una sandbox completa.
 
-## 3. Consume secretos sin imprimirlos
+El starter enumera variantes sensibles comunes en vez de bloquear todo `.env.*`, para
+que Claude pueda leer `.env.example`. Añade al `deny` los nombres sensibles propios de
+tu proyecto si usas otra convención.
 
-Cuando una herramienta necesita una credencial, cárgala dentro del comando y evita devolver su valor al chat o al log:
+## 3. Consume secretos por una interfaz segura
 
-```bash
-set -a
-source .env
-set +a
-mi-comando --token "$API_TOKEN"
-```
+Usa, en este orden, una interfaz que la herramienta documente: integración con un
+gestor de secretos o keychain; variable de entorno inyectada por el launcher; o
+entrada por `stdin`/file descriptor cuando esté soportada.
 
-No uses `echo "$API_TOKEN"`, no pegues credenciales en prompts y no las incluyas en URLs que puedan terminar en logs.
+- No uses `source .env` como receta genérica: `source` **ejecuta** el contenido como
+  shell y sólo es aceptable si controlas y confías en ese archivo.
+- No pases credenciales como argumentos (`--token ...`) ni en URLs: pueden aparecer en
+  `ps`, telemetría, historial o logs.
+- No uses `echo` para inspeccionarlas y desactiva trazas como `set -x` durante su uso.
+- No pegues secretos en prompts ni pidas al agente que construya comandos que los
+  incluyan. Consulta la interfaz segura específica de cada herramienta.
 
 ## 4. Automatiza sólo controles simples y verificables
 

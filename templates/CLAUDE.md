@@ -38,8 +38,9 @@
 
 ## Seguridad y límites
 
-- Secretos solo en `.env` (en `.gitignore`); mantener `.env.example` con placeholders.
-  Consume el secreto dentro del comando, sin imprimir su valor. Referencia:
+- Secretos fuera del repo y del contexto. Preferir keychain o un gestor de secretos;
+  usar `.env` sólo como alternativa local ignorada y mantener `.env.example` con
+  placeholders. No imprimir secretos ni pasarlos como argumentos. Referencia:
   https://github.com/ronaldmego/claude-kit/blob/main/docs/security.md
 - **Áreas off-limits (⚠️ NO TOCAR):** [fork externo, app hermana, código generado —
   márcalas para que el agente no edite lo que parece muerto pero no lo es].
