@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Claude Code: cada instrucción tiene un lugar</title>
+  <desc id="desc">Flujo en cuatro pasos: contexto estable en CLAUDE.md, planificación con Plan Mode, procedimientos repetibles en skills y validaciones determinísticas en hooks. Los secretos permanecen fuera del contexto.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.65"/>
+    </pattern>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="1200" fill="#020617"/>
+  <rect width="1200" height="1200" fill="url(#grid)"/>
+
+  <text x="80" y="105" fill="#f8fafc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="54" font-weight="700">Cada instrucción tiene un lugar</text>
+  <text x="80" y="155" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="26">Saca lo importante del prompt y ponlo en el entorno.</text>
+
+  <!-- Connections -->
+  <path d="M330 380 H415" fill="none" stroke="#94a3b8" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M785 380 H870" fill="none" stroke="#94a3b8" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M980 550 V635 H600 V700" fill="none" stroke="#94a3b8" stroke-width="5" marker-end="url(#arrow)"/>
+
+  <!-- Context card -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="230" width="250" height="320" rx="24" fill="#0f172a" stroke="#22d3ee" stroke-width="3"/>
+    <circle cx="125" cy="280" r="25" fill="#083344" stroke="#22d3ee" stroke-width="2"/>
+    <text x="125" y="289" text-anchor="middle" fill="#67e8f9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24" font-weight="700">1</text>
+    <text x="115" y="350" fill="#67e8f9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24" font-weight="700">CONTEXTO</text>
+    <text x="115" y="410" fill="#f8fafc" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="30" font-weight="700">CLAUDE.md</text>
+    <text x="115" y="465" fill="#cbd5e1" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24">Sólo lo estable:</text>
+    <text x="115" y="505" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="21">contexto, comandos,</text>
+    <text x="115" y="535" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="21">convenciones y fuentes.</text>
+  </g>
+
+  <!-- Plan card -->
+  <g filter="url(#shadow)">
+    <rect x="435" y="230" width="350" height="320" rx="24" fill="#0f172a" stroke="#34d399" stroke-width="3"/>
+    <circle cx="480" cy="280" r="25" fill="#064e3b" stroke="#34d399" stroke-width="2"/>
+    <text x="480" y="289" text-anchor="middle" fill="#6ee7b7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24" font-weight="700">2</text>
+    <text x="470" y="350" fill="#6ee7b7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24" font-weight="700">PLAN</text>
+    <text x="470" y="410" fill="#f8fafc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="30" font-weight="700">Plan Mode</text>
+    <text x="470" y="465" fill="#cbd5e1" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24">Antes de cambios grandes:</text>
+    <text x="470" y="505" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="21">inspecciona, decide el alcance</text>
+    <text x="470" y="535" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="21">y recién entonces modifica.</text>
+  </g>
+
+  <!-- Skills card -->
+  <g filter="url(#shadow)">
+    <rect x="890" y="230" width="230" height="320" rx="24" fill="#0f172a" stroke="#a78bfa" stroke-width="3"/>
+    <circle cx="935" cy="280" r="25" fill="#4c1d95" stroke="#a78bfa" stroke-width="2"/>
+    <text x="935" y="289" text-anchor="middle" fill="#c4b5fd" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24" font-weight="700">3</text>
+    <text x="925" y="350" fill="#c4b5fd" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="22" font-weight="700">REUTILIZA</text>
+    <text x="925" y="410" fill="#f8fafc" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="30" font-weight="700">skills/</text>
+    <text x="925" y="465" fill="#cbd5e1" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24">Lo repetible.</text>
+    <text x="925" y="505" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="21">Runbooks que no</text>
+    <text x="925" y="535" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="21">reescribes cada vez.</text>
+  </g>
+
+  <!-- Hooks card -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="720" width="480" height="250" rx="24" fill="#0f172a" stroke="#fbbf24" stroke-width="3"/>
+    <circle cx="410" cy="770" r="25" fill="#78350f" stroke="#fbbf24" stroke-width="2"/>
+    <text x="410" y="779" text-anchor="middle" fill="#fde68a" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24" font-weight="700">4</text>
+    <text x="455" y="780" fill="#fde68a" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24" font-weight="700">VERIFICA</text>
+    <text x="405" y="850" fill="#f8fafc" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="32" font-weight="700">hooks</text>
+    <text x="555" y="850" fill="#cbd5e1" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24">Lo determinístico.</text>
+    <text x="405" y="900" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="22">Formato, tests y controles que deben ejecutarse siempre.</text>
+  </g>
+
+  <!-- Secrets boundary -->
+  <rect x="80" y="1030" width="1040" height="100" rx="20" fill="#4c0519" stroke="#fb7185" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="120" y="1075" fill="#fda4af" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="22" font-weight="700">FUERA DEL CONTEXTO</text>
+  <text x="120" y="1110" fill="#f8fafc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="25">Secretos en .env o un vault · nunca en Git · nunca en el prompt</text>
+</svg>
