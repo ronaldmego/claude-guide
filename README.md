@@ -1,97 +1,80 @@
 # claude-kit
 
-Guía en español para usar **Claude** bien y seguro.
+**Kit de arranque en español para configurar Claude Code en tus repos** — código o
+datos. El objetivo: que Claude sea confiable, reproducible y seguro **sin llenar el
+prompt de instrucciones**.
 
-Dos tracks, según cómo trabajas:
+La lección detrás del kit: fui agregando contexto, reglas y excepciones a mi setup
+hasta que se volvió más difícil de entender, no más fácil — más instrucciones no
+hacían a Claude más confiable, lo hacían más confuso. Lo que arregló el problema no
+fue escribir más, sino **decidir qué pertenece a cada capa**: el contexto estable en
+`CLAUDE.md`, los procedimientos repetibles en skills, la validación determinística en
+hooks y los secretos fuera del contexto del modelo.
 
-- **Con código** → Claude Code — [`code-data/guia-code.md`](code-data/guia-code.md)
-- **Sin código** → Cowork / Chat — [`sin-codigo/guia-sin-codigo.md`](sin-codigo/guia-sin-codigo.md)
+## La idea en un diagrama
 
-Más un núcleo común: sección de seguridad + plantillas `CLAUDE.md` / `settings.json` listas para copiar.
-
-## Estructura del repo
+![Claude Code: cada instrucción tiene un lugar — contexto en CLAUDE.md, planificación con Plan Mode, procedimientos en skills, validaciones con hooks y secretos fuera del contexto](assets/claude-kit-structure.svg)
 
 ```
-claude-kit.md     ← router / índice curado — EMPIEZA AQUÍ
-README.md         ← este archivo (estructura + índice)
-
-comun/            ← núcleo común (lo usan ambos tracks)
-  seguridad.md            🔒 sección de seguridad (prácticas probadas)
-  global-claude-md.md     plantilla CLAUDE.md global (~/.claude/)
-  proyecto-claude-md.md   plantilla CLAUDE.md por proyecto
-  settings-json.md        settings.json de ejemplo (protege secretos)
-  diagrama-capas.md       diagrama del setup en capas
-
-code-data/        ← track "con código" — Claude Code (si programas o trabajas con datos)
-  guia-code.md    Claude Code · skills · hooks · subagents · MCP
-
-sin-codigo/       ← track "sin código" — Cowork / Chat (sin terminal)
-  guia-sin-codigo.md   delegar trabajo real a Claude sin programar
+claude-kit/
+├── README.md                    ← empieza aquí
+├── assets/
+│   └── claude-kit-structure.svg ← diagrama embebido y reutilizable
+├── templates/
+│   ├── CLAUDE.md                ← contexto estable del proyecto (cópialo a tu repo)
+│   ├── settings.json            ← deny de lectura para secretos
+│   └── example-skill/SKILL.md   ← una skill mínima de ejemplo
+└── docs/
+    ├── security.md              ← defensa en profundidad para secretos
+    └── advanced.md              ← capa global, skills globales, agents, MCP, equipo
 ```
 
-## Índice
+## Las reglas
 
-**▶ Empieza aquí:** [`claude-kit.md`](claude-kit.md) — router central: los dos
-tracks, fuentes de skills/plugins, lectura mínima y la nota de seguridad.
+1. **`CLAUDE.md` = solo lo estable.** Qué es el proyecto, comandos, arquitectura,
+   convenciones, fuentes de verdad. No lo conviertas en un volcado de instrucciones.
+2. **Plan Mode antes de cambios grandes.** Multi-file, refactors o algo desordenado:
+   deja que Claude inspeccione y planifique antes de tocar código.
+3. **Lo repetible → skills.** Si tecleas seguido "review this" o "prepara esto para
+   deploy", conviértelo en un runbook reutilizable en vez de reescribirlo cada vez.
+4. **Lo determinístico → hooks.** Formato, tests, validación, guardrails: lo que debe
+   pasar **siempre** lo maneja el sistema, no la memoria del modelo.
+5. **Secretos solo en `.env`, consumidos sin imprimir.** El `deny: Read(.env)` es una
+   red de seguridad, no un reemplazo de la disciplina — ver [docs/security.md](docs/security.md).
 
-**📚 Recursos / fuentes curadas:** los links a docs oficiales, repos y registries
-viven curados dentro del índice y las guías (no en una página aparte):
-- **Skills / plugins (discovery):** [`claude-kit.md` → Fuentes de skills/plugins](claude-kit.md#fuentes-de-skillsplugins-discovery)
-  — repos oficiales de Anthropic + awesome-lists + registries, con señal (stars) y uso.
-- **Lectura mínima (6 piezas):** [`claude-kit.md` → Lectura mínima cross-track](claude-kit.md#lectura-mínima-cross-track-si-solo-hay-tiempo-para-6-piezas)
-  — la ruta corta si solo hay tiempo para lo esencial.
-- **Docs oficiales por track:** [con código](code-data/guia-code.md#guía-oficial-principal)
-  · [sin código](sin-codigo/guia-sin-codigo.md#guía-oficial-principal).
-
-**🔒 Seguridad (transversal):** [`comun/seguridad.md`](comun/seguridad.md) — mínimo
-privilegio + humano en lo irreversible, higiene de secretos y **guardrails técnicos
-probados** (`deny` en `settings.json`, hooks, el guard anti-fuga-de-secretos).
-
-**◆ Track "con código"** — Claude Code
-- [`code-data/guia-code.md`](code-data/guia-code.md) — Claude Code, `CLAUDE.md`,
-  skills / hooks / subagents / MCP, setup de proyecto, seguridad. Autocontenida.
-
-**◇ Track "sin código"** — Cowork / Chat
-- [`sin-codigo/guia-sin-codigo.md`](sin-codigo/guia-sin-codigo.md) — delegar trabajo
-  real a Claude sin terminal (Cowork y Chat), con seguridad. Autocontenida.
-
-**Núcleo común — `comun/`** (ambos tracks)
-- 🔒 [`comun/seguridad.md`](comun/seguridad.md) — sección de seguridad: `deny` rules,
-  hooks, el guard anti-fuga-de-secretos, almacenamiento de credenciales / keychain,
-  un guard de token-en-URL y un denylist en CI.
-- [`comun/diagrama-capas.md`](comun/diagrama-capas.md) — diagrama ASCII del setup en
-  capas (global vs por proyecto).
-- [`comun/global-claude-md.md`](comun/global-claude-md.md) — plantilla lista:
-  `CLAUDE.md` **global** (va en `~/.claude/`).
-- [`comun/proyecto-claude-md.md`](comun/proyecto-claude-md.md) — plantilla lista:
-  `CLAUDE.md` **por proyecto** (raíz del repo).
-- [`comun/settings-json.md`](comun/settings-json.md) — ejemplo listo: `settings.json`
-  con `deny` para proteger secretos.
-
-## Empezar
+## Quick start (menos de 15 min)
 
 ```bash
 git clone https://github.com/ronaldmego/claude-kit.git
 ```
 
-1. Lee **[`claude-kit.md`](claude-kit.md)** y elige tu track:
-   - Programas / trabajas con datos → **[`code-data/guia-code.md`](code-data/guia-code.md)**.
-   - No programas → **[`sin-codigo/guia-sin-codigo.md`](sin-codigo/guia-sin-codigo.md)**.
-2. Copia [`comun/global-claude-md.md`](comun/global-claude-md.md) → `~/.claude/CLAUDE.md` y adáptalo.
-3. Copia [`comun/proyecto-claude-md.md`](comun/proyecto-claude-md.md) → un `CLAUDE.md` en la raíz de cada proyecto.
-4. Copia el `settings.json` de [`comun/settings-json.md`](comun/settings-json.md) (más útil en máquinas compartidas / menos confiables).
+1. Copia [`templates/CLAUDE.md`](templates/CLAUDE.md) a un `CLAUDE.md` en la raíz de
+   tu repo. Rellena los `[placeholders]` y borra lo que no aplique. **Solo lo estable.**
+2. Copia [`templates/settings.json`](templates/settings.json) a
+   `<repo>/.claude/settings.json` para proteger tus secretos con `deny`.
+3. (Opcional) Copia [`templates/example-skill/`](templates/example-skill/SKILL.md) a
+   `<repo>/.claude/skills/` y adáptala a un procedimiento que repites.
+4. Abre Claude Code en el repo y confirma que lee el `CLAUDE.md` (pídele que resuma el
+   contexto del proyecto). Agrega una skill o un hook sólo cuando aparezca una tarea
+   repetible o una validación que realmente deba ejecutarse siempre.
 
-## Modelo en capas
+## Qué hay aquí
 
-El setup se arma en **capas**, de lo más general (todos tus proyectos) a lo más
-específico (un proyecto). Diagrama completo en [`comun/diagrama-capas.md`](comun/diagrama-capas.md):
+- **Plantillas** listas para copiar: [`CLAUDE.md`](templates/CLAUDE.md) ·
+  [`settings.json`](templates/settings.json) ·
+  [`example-skill/SKILL.md`](templates/example-skill/SKILL.md).
+- **[docs/security.md](docs/security.md)** — defensa en profundidad para secretos:
+  qué bloquea (y qué no) el `deny`, consumir secretos sin imprimirlos, cuándo usar
+  hooks y aprobación humana en lo irreversible.
+- **[docs/advanced.md](docs/advanced.md)** — capa opcional cuando ya tienes rodaje:
+  `CLAUDE.md` global, skills globales, subagents, MCP y trabajo en equipo.
 
-- **Capa 1 · global** (`~/.claude/CLAUDE.md` + `settings.json`) — tu identidad,
-  seguridad y principios de trabajo. Aplica a toda la máquina.
-- **Capa 1.5 · skills globales** (`~/.claude/skills/`) — skills invocables como
-  `/<nombre>` desde cualquier proyecto, enlazadas desde un repo hub versionado.
-- **Capa 2 · por proyecto** (`<repo>/CLAUDE.md`) — contexto, comandos, convenciones.
-- Lo **determinístico** vive en hooks; lo **repetible**, en skills.
+## Alcance
+
+Es un **kit personal de arranque**, no una arquitectura enterprise ni una enciclopedia
+de Claude. Reúne lo mínimo verificado para que un proyecto sea confiable y seguro. Las
+fuentes normativas son los [docs oficiales de Claude Code](https://code.claude.com/docs);
+este kit solo te ahorra las primeras decisiones.
 
 ## Licencia
 
