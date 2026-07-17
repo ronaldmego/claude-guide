@@ -22,7 +22,7 @@ claude-kit/
 │   └── claude-kit-structure.svg ← diagrama embebido y reutilizable
 ├── templates/
 │   ├── CLAUDE.md                ← contexto estable del proyecto (cópialo a tu repo)
-│   ├── settings.json            ← deny de lectura para secretos
+│   ├── settings.json            ← deny para archivos sensibles comunes
 │   └── example-skill/SKILL.md   ← una skill mínima de ejemplo
 └── docs/
     ├── security.md              ← defensa en profundidad para secretos
@@ -34,29 +34,38 @@ claude-kit/
 1. **`CLAUDE.md` = solo lo estable.** Qué es el proyecto, comandos, arquitectura,
    convenciones, fuentes de verdad. No lo conviertas en un volcado de instrucciones.
 2. **Plan Mode antes de cambios grandes.** Multi-file, refactors o algo desordenado:
-   deja que Claude inspeccione y planifique antes de tocar código.
+   deja que Claude inspeccione antes de tocar código. Entra con `Shift+Tab` dos veces
+   o inicia la sesión con `claude --permission-mode plan`.
 3. **Lo repetible → skills.** Si tecleas seguido "review this" o "prepara esto para
    deploy", conviértelo en un runbook reutilizable en vez de reescribirlo cada vez.
 4. **Lo determinístico → hooks.** Formato, tests, validación, guardrails: lo que debe
    pasar **siempre** lo maneja el sistema, no la memoria del modelo.
-5. **Secretos solo en `.env`, consumidos sin imprimir.** El `deny: Read(.env)` es una
-   red de seguridad, no un reemplazo de la disciplina — ver [docs/security.md](docs/security.md).
+5. **Secretos fuera del repo y del contexto.** Prefiere keychain o un gestor de
+   secretos; usa `.env` sólo como alternativa local ignorada. No los imprimas ni los
+   pases como argumentos. El `deny` es una red adicional — ver [docs/security.md](docs/security.md).
 
 ## Quick start (menos de 15 min)
 
-```bash
-git clone https://github.com/ronaldmego/claude-kit.git
-```
-
-1. Copia [`templates/CLAUDE.md`](templates/CLAUDE.md) a un `CLAUDE.md` en la raíz de
-   tu repo. Rellena los `[placeholders]` y borra lo que no aplique. **Solo lo estable.**
-2. Copia [`templates/settings.json`](templates/settings.json) a
-   `<repo>/.claude/settings.json` para proteger tus secretos con `deny`.
-3. (Opcional) Copia [`templates/example-skill/`](templates/example-skill/SKILL.md) a
-   `<repo>/.claude/skills/` y adáptala a un procedimiento que repites.
-4. Abre Claude Code en el repo y confirma que lee el `CLAUDE.md` (pídele que resuma el
-   contexto del proyecto). Agrega una skill o un hook sólo cuando aparezca una tarea
-   repetible o una validación que realmente deba ejecutarse siempre.
+1. Clona el kit y guarda su ruta:
+   ```bash
+   git clone https://github.com/ronaldmego/claude-kit.git
+   cd claude-kit && KIT="$PWD"
+   ```
+2. Entra a tu proyecto y copia el starter. Si esos archivos ya existen, integra los
+   cambios manualmente en vez de sobrescribirlos:
+   ```bash
+   cd /ruta/a/tu-proyecto
+   mkdir -p .claude/skills/revisar-diff
+   test -e CLAUDE.md || cp "$KIT/templates/CLAUDE.md" ./CLAUDE.md
+   test -e .claude/settings.json || cp "$KIT/templates/settings.json" .claude/settings.json
+   test -e .claude/skills/revisar-diff/SKILL.md || \
+     cp "$KIT/templates/example-skill/SKILL.md" .claude/skills/revisar-diff/SKILL.md
+   ```
+3. Rellena los `[placeholders]` de `CLAUDE.md` y borra lo que no aplique. **Sólo lo
+   estable.** Confirma que tu `.gitignore` excluye `.env`, `.env.*` y `secrets/`, pero
+   permite `!.env.example`. La skill es opcional; elimínala si no la necesitas.
+4. Abre Claude Code, confirma que entiende el proyecto y usa Plan Mode antes de un
+   cambio grande (`Shift+Tab` dos veces o `claude --permission-mode plan`).
 
 ## Qué hay aquí
 
